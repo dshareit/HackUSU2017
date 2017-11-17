@@ -55,7 +55,7 @@
          <!-- reverse url of your client id, for example: --> 
 <string>com.googleusercontent.apps.716144509907-em29mst9pss72pqpuci8jj67iqrh8a9p</string>
          <!-- bundle id, for example: -->
-            <string>com.yourcompany.friendlychat</string>
+            <string>com.yourcompany.hackusu2017</string>
          </array>
       </dict>
   </array>
