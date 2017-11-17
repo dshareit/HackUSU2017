@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "716144509907",
+    "firebase_url": "https://secret-santa-86017.firebaseio.com",
+    "project_id": "secret-santa-86017",
+    "storage_bucket": "secret-santa-86017.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716144509907:android:ee576ff600b30e6d",
+        "android_client_info": {
+          "package_name": "com.yourcompany.hackusu2017"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716144509907-i206vmucklerr7d7641d9024gj7mjk6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-TkoHgUbyPVuSSz0K4tCv5VkSq58pNvg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
