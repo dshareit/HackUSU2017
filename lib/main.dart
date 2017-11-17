@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hackusu2017/firstPage.dart';
+import 'package:hackusu2017/secondPage.dart';
+import 'package:hackusu2017/thirdPage.dart';
 
 void main() {
   runApp(new MyApp());
@@ -29,6 +32,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  int _index = 0;
+
   @override
   Widget build(BuildContext context) {
 
@@ -37,15 +42,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: new Text(widget.title),
       ),
-      body: new Center(
 
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-        ),
-      ),
+      body: _bodyList()[_index],
+
       bottomNavigationBar:
         new BottomNavigationBar(
-          items: _buildBottomNavigationItemList()
+          currentIndex: _index,
+          items: _buildBottomNavigationItemList(),
+          onTap: (int index) {
+            setState((){
+              this._index = index;
+            });
+          },
         ),
     );
   }
@@ -57,4 +65,18 @@ class _MyHomePageState extends State<MyHomePage> {
     result.add(new BottomNavigationBarItem(icon: new Icon(Icons.settings), title: new Text("Settings")));
     return result;
   }
+
+  List<Widget> _bodyList() {
+    List<Widget> result = new List<Widget>();
+    result.add(new FirstPage());
+    result.add(new SecondPage());
+    result.add(new ThirdPage());
+    return result;
+  }
 }
+
+
+
+
+
+
