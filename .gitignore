@@ -42,6 +42,8 @@ Icon?
 
 Pods/
 
+pubspec.lock
+
 GeneratedPluginRegistrant.java
 
 .flutter-plugins
