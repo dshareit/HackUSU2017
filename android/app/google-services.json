@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "716144509907-5nba1aihokrc5fq6nopd276stdb2m3n1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yourcompany.hackusu2017",
+            "certificate_hash": "76d74187688779e5a141355ca62c5ccb20eae99e"
+          }
+        },
+        {
           "client_id": "716144509907-i206vmucklerr7d7641d9024gj7mjk6n.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,20 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716144509907-nmtqbd5neq0hjnea9g9491209ucjnhr9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yourcompany.firebaseios"
+              }
+            },
+            {
+              "client_id": "716144509907-i206vmucklerr7d7641d9024gj7mjk6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
