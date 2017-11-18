@@ -9,7 +9,6 @@ import 'package:firebase_database/firebase_database.dart';         //new
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 final analytics = new FirebaseAnalytics();
 final auth = FirebaseAuth.instance;
@@ -25,22 +24,21 @@ class SecondPage extends StatefulWidget {
 
 class _SecondPageState extends State<SecondPage> {
 
+  _SecondPageState();
+
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Column(
       children: <Widget>[
-        new Flexible(
-            child: new FirebaseAnimatedList(                            //new
-                query: reference,                                       //new
-                padding: new EdgeInsets.all(8.0),                       //new                 //new
-                itemBuilder: (_, DataSnapshot snapshot, Animation<double> animation) { //new
-                  return new ResultCard(new Results(snapshot.value['name'], snapshot.value['item'],
-                      snapshot.value['image'], snapshot.value['location'], snapshot.value['link']));}
+        new Expanded(
+            child: new ListView.builder(
+                itemBuilder: (context, index) => new ResultCard(resultList[index]),
+              itemCount: resultList.length,
+              padding: new EdgeInsets.symmetric(vertical: 16.0),
+            ),
           ),
-        ),
-        new Text("Test"),
       ],
     );
   }
@@ -48,19 +46,93 @@ class _SecondPageState extends State<SecondPage> {
 
 class Results{
   final String name;
-  final String item;
   final String image;
+  final String item;
   final String location;
   final String link;
 
-  Results(
+  const Results({
     this.name,
-    this.item,
     this.image,
+    this.item,
     this.location,
-    this.link,
-  );
+    this.link
+  });
 }
+
+
+List<Results> resultList = [
+  const Results(
+    name: "Smith Family",
+    image: "4Fruit of the Loom Mens Basic Brief",
+    item: "assets/HackUSUEvent.png",
+    location: "test",
+    link: "test",
+  ),
+  const Results(
+    name: "Smith Family",
+    image: "4Fruit of the Loom Mens Basic Brief",
+    item: "assets/HackUSUEvent.png",
+    location: "test",
+    link: "test",
+  ),
+  const Results(
+    name: "Smith Family",
+    image: "4Fruit of the Loom Mens Basic Brief",
+    item: "assets/HackUSUEvent.png",
+    location: "test",
+    link: "test",
+  ),
+  const Results(
+    name: "Smith Family",
+    image: "4Fruit of the Loom Mens Basic Brief",
+    item: "assets/HackUSUEvent.png",
+    location: "test",
+    link: "test",
+  ),
+  const Results(
+    name: "Smith Family",
+    image: "4Fruit of the Loom Mens Basic Brief",
+    item: "assets/HackUSUEvent.png",
+    location: "test",
+    link: "test",
+  ),
+  const Results(
+    name: "Smith Family",
+    image: "4Fruit of the Loom Mens Basic Brief",
+    item: "assets/HackUSUEvent.png",
+    location: "test",
+    link: "test",
+  ),
+  const Results(
+    name: "Smith Family",
+    image: "4Fruit of the Loom Mens Basic Brief",
+    item: "assets/HackUSUEvent.png",
+    location: "test",
+    link: "test",
+  ),
+  const Results(
+    name: "Smith Family",
+    image: "4Fruit of the Loom Mens Basic Brief",
+    item: "assets/HackUSUEvent.png",
+    location: "test",
+    link: "test",
+  ),
+  const Results(
+    name: "Smith Family",
+    image: "4Fruit of the Loom Mens Basic Brief",
+    item: "assets/HackUSUEvent.png",
+    location: "test",
+    link: "test",
+  ),
+  const Results(
+    name: "Smith Family",
+    image: "4Fruit of the Loom Mens Basic Brief",
+    item: "assets/HackUSUEvent.png",
+    location: "test",
+    link: "test",
+  )
+];
 
 class ResultCard extends StatelessWidget{
   final Results results;
