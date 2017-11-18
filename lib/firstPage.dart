@@ -176,6 +176,14 @@ class ResultCard extends StatelessWidget{
               width: 72.0,
               color: Colors.blue
           ),
+          new Container(
+            child: new Row(
+              children: <Widget>[
+                new Container(width: 8.0),
+                new Text(results.description)
+              ],
+            )
+          )
         ],
       ),
     );
