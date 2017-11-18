@@ -1,9 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hackusu2017/event1Page.dart';
-import 'package:hackusu2017/event2Page.dart';
-import 'package:hackusu2017/event3Page.dart';
-import 'package:hackusu2017/eventsPage.dart';
 
 class FirstPage extends StatefulWidget{
   @override
@@ -11,7 +7,8 @@ class FirstPage extends StatefulWidget{
 }
 
 class _FirstPageState extends State<FirstPage> {
-  int _index = 0;
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -32,19 +29,10 @@ class _FirstPageState extends State<FirstPage> {
           color: Colors.black,
         ),
         new Expanded(
-            child: new Scaffold(
-              floatingActionButton: _index != 0 ? new IconButton(
-                icon: new Icon(Icons.arrow_back),
-                onPressed: () {
-                  setState((){
-                    this._index = 0;
-                  });
-                },
-                ) : new Text(" "),
-              body: _index != 0 ? _eventWidgetList()[_index] : new Row(
+            child: new Row(
                 children: <Widget>[
                   new Expanded(
-                    child: new PopupMenuButton(
+                    child: new ListView.builder(
                       itemBuilder: (context, index) => new ResultCard(resultList[index]),
                       itemCount: resultList.length,
                       padding: new EdgeInsets.symmetric(vertical: 16.0),
@@ -52,21 +40,12 @@ class _FirstPageState extends State<FirstPage> {
                   ),
                 ],
               ),
-              ),
-          ),
+            ),
       ],
     );
   }
 }
 
-List<Widget> _eventWidgetList(){
-  List<Widget> pages = new List<Widget>();
-  pages.add(new eventsPage());
-  pages.add(new event1Page());
-  pages.add(new event2Page());
-  pages.add(new event3Page());
-  return pages;
-}
 
 class DaysToChristmas extends StatelessWidget{
   DateTime christmas = new DateTime.utc(2017, 12, 25);
@@ -135,21 +114,31 @@ List<Results> resultList = [
     title: 'Hackathon',
     time: 'Today',
     image: "assets/HackUSUEvent.png",
-    description: "More info...",
+    description: "hackusuevents.org",
+  ),
+  const Results(
+    title: 'Hunger & Homelessness Awareness Week',
+    time: 'November 11 - 19',
+    image: 'assets/hhw.png',
+    description: '',
   ),
   const Results(
     title: 'Project Homeless Connect',
     time: 'October 6, 2017',
     image: "assets/phc.png",
-    description: "More info...",
-    //https://www.phcslc.org/
+    description: "phcslc.org",
+  ),
+  const Results(
+    title: 'Food Drive',
+    time: 'October 2017',
+    image: "assets/StuffaBus.jpg",
+    description: "Stuff a bus at USU"
   ),
   const Results(
     title: 'Students Collect Donations',
     time: 'May 15,2017',
     image: "assets/logo.png",
-    description: "More info...",
-    //www.theroadhome.org/news
+    description: "theroadhome.org",
   ),
 ];
 
@@ -179,7 +168,7 @@ class ResultCard extends StatelessWidget{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Container(height: 4.0),
-          new Text(results.title, style: new TextStyle(color: Colors.black12)),
+          new Text(results.title),
           new Container(height: 10.0),
           new Text(results.time),
           new Container(
@@ -215,13 +204,12 @@ class ResultCard extends StatelessWidget{
         ],
       ),
     );
-    return new MaterialButton(
+    return new Container(
       height: 120.0,
-      onPressed: _cardLinks,
-      //margin: const EdgeInsets.symmetric(
-      //    vertical: 16.0,
-      //    horizontal: 24.0,
-      //),
+      margin: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 24.0,
+      ),
       child: new Stack(
         children: <Widget>[
           resultInfo,
@@ -230,8 +218,4 @@ class ResultCard extends StatelessWidget{
       ),
     );
   }
-}
-
-void _cardLinks(){
-  print("button");
 }

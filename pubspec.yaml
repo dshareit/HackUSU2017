@@ -39,6 +39,8 @@ flutter:
     - assets/HackUSUEvent.png
     - assets/logo.png
     - assets/phc.png
+    - assets/hhw.png
+    - assets/StuffaBus.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
