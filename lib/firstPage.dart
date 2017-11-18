@@ -48,13 +48,13 @@ class Results{
   final String title;
   final String time;
   final String image;
-  final List<String> gifts;
+  final String description;
 
   const Results({
     this.title,
     this.time,
     this.image,
-    this.gifts,
+    this.description,
 });
 }
 
@@ -64,19 +64,19 @@ List<Results> resultList = [
     title: 'Hackathon',
     time: 'Today',
     image: "assets/HackUSUEvent.png",
-    gifts: const["trophy", "bubbles", "rockstars"],
+    description: "",
   ),
   const Results(
-    title: 'Planning meeting',
-    time: 'Yesterday',
+    title: 'Project Homeless Connect',
+    time: 'October 6, 2017',
     image: "assets/images.jpg",
-    gifts: const ["Bike", "tablet", "Huntsman Hall"],
+    description: "Visit their websit here: https://www.phcslc.org/",
   ),
   const Results(
     title: 'Halloween',
     time: 'October 31',
     image: "assets/kids-trick-or-treating.jpg",
-    gifts: const ["Candy", "more candy", "pumkins"],
+    description: "",
   )
 ];
 
@@ -167,11 +167,7 @@ class DaysToChristmas extends StatelessWidget{
           new Expanded(
             child: new Row(
               children: <Widget>[
-                new Text("Only", style: new TextStyle(fontWeight: FontWeight.bold)),
-                new Text(daysLeft, style: new TextStyle(fontWeight: FontWeight.bold)),
-                new Text("days", style: new TextStyle(fontWeight: FontWeight.bold)),
-                new Text("until", style: new TextStyle(fontWeight: FontWeight.bold)),
-                new Text("Christmas!!", style: new TextStyle(fontWeight: FontWeight.bold)),
+                new Text("ONLY " + daysLeft + " DAYS UNTIL CHRISTMAS!", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 19.0)),
               ],
             ),
           ),
@@ -179,22 +175,22 @@ class DaysToChristmas extends StatelessWidget{
       ),
       height: 110.0,
       decoration: new BoxDecoration(
-        color: Colors.blue,
+        color: Colors.transparent,
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[
           new BoxShadow(
-            color: Colors.red,
+            color: Colors.transparent,
             blurRadius: 10.0,
           ),
         ],
       ),
     );
     return new Container(
-      height: 120.0,
+      height: 45.0,
       margin: const EdgeInsets.symmetric(
         vertical: 16.0,
-        horizontal: 24.0,
+        horizontal: 26.0,
       ),
       child: new Stack(
         children: <Widget>[
