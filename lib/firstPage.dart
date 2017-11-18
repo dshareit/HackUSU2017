@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hackusu2017/main.dart';
 
-
 class FirstPage extends StatefulWidget{
   @override
   _FirstPageState createState() => new _FirstPageState();
 }
 
 class _FirstPageState extends State<FirstPage> {
-  get buttonText => new Text("Start Giving");
+
+  //get countDown => new ;
 
 
 
@@ -18,138 +18,108 @@ class _FirstPageState extends State<FirstPage> {
     // TODO: implement build
     return new Column(
       children: <Widget>[
-//        new MaterialButton(
-//          onPressed: null,
-//          color: Colors.blueGrey,
-//          child: buttonText,
-//          textColor: Colors.white,
-//        ),
-//        new Divider(
-//          height: 16.0,
-//            indent: 0.0,
-//            color: Colors.black,
-//        ),
-        new Text("News and Events"),
-        new Divider(
-          height: 16.0,
-          indent: 0.0,
-          color: Colors.black,
-        ),
-        new ListBody(
-          children: <Widget>[
-            new EventItem(),
-          ],
-        ),
+        new Expanded(
+            child: new ListView.builder(
+                itemBuilder: (context, index) => new ResultCard(resultList[index]),
+              itemCount: resultList.length,
+              padding: new EdgeInsets.symmetric(vertical: 16.0),
+            ),
+          ),
       ],
     );
   }
 }
 
-class Event {
-  final String title;
-  final String date;
-  final String time;
-  final String description;
-  final String location;
-  final FileImage image;
-
-  const Event({
-    this.title,
-    this.date,
-    this.time,
-    this.description,
-    this.location,
-    this.image});
-}
-
-const eventList = const <Event>[
-  const Event(
-    title: 'Hackathon',
-    date: 'November 17, 2017',
-    time: '9:00 A.M.',
-    location: 'USU',
-    description: 'Super awesome coding event....',
-    image: const FileImage(null),
-  ),
-  const Event(
-    title: 'Awards Ceremony',
-    date: 'November 18, 2017',
-    time: '8:00 P.M.',
-    location: 'USU',
-    description: 'Who wins it all?????',
-    image: const FileImage(null),
-    ),
-];
-
 class Results{
   final String title;
   final String date;
-  final FileImage image;
+  //final FileImage image;
   final List<String> gifts;
 
   const Results({
     this.title,
     this.date,
-    this.image,
+    //this.image,
     this.gifts
 });
 }
 
-const resultList = const <Results>[
+
+List<Results> resultList = [
   const Results(
     title: 'Planning meeting',
-    date: 'November 7, 2017',
-    image: const FileImage(null),
+    date: 'Yesterday',
+    //image: const FileImage(null),
     gifts: const ["Bike", "tablet", "Huntsman Hall"],
+  ),
+  const Results(
+    title: 'Hackathon',
+    date: 'Today',
+    gifts: const["trophy", "bubbles", "rockstars"],
+  ),
+  const Results(
+    title: 'Halloween',
+    date: 'October 31',
+    gifts: const ["Candy", "more candy", "pumkins"],
   )
 ];
 
-class _EventItem extends StatelessWidget{
-  final Event _event;
+class ResultCard extends StatelessWidget{
+  final Results results;
 
-  _EventItem(this._event);
-  
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return new ListTile(
-        leading: new CircleAvatar(
-          child: new Image(image: _event.image),
-        ),
-        title: new Text(_event.title),
-        subtitle: new Text(_event.description),
-        onTap: null,
-    );
-  }
-}
+  ResultCard(this.results);
 
-class _ResultItem extends StatelessWidget{
-  final Results _result;
-
-  _ResultItem(this._result);
 
   @override
   Widget build(BuildContext context){
-    return new ListTile(
-      leading: new CircleAvatar(
-        child: new Image(image: _result.image),
+    final resultInfoContent = new Container(
+      margin: new EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+      constraints: new BoxConstraints.expand(),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          new Container(height: 4.0),
+          new Text(results.title),
+          new Container(height: 10.0),
+          new Text(results.date),
+          new Container(
+              margin: new EdgeInsets.symmetric(vertical: 8.0),
+              height: 2.0,
+              width: 18.0,
+              color: Colors.red
+          ),
+        ],
       ),
-      title: new Text(_result.title),
-        subtitle: new Text(_result.date),
+    );
+
+    final resultInfo = new Container(
+      child: resultInfoContent,
+      height: 124.0,
+      decoration: new BoxDecoration(
+        color: Colors.cyan,
+        shape: BoxShape.rectangle,
+        borderRadius: new BorderRadius.circular(8.0),
+        boxShadow: <BoxShadow>[
+          new BoxShadow(
+            color: Colors.black12,
+            blurRadius: 10.0,
+          ),
+        ],
+      ),
+    );
+    return new Container(
+      height: 120.0,
+      margin: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 24.0,
+      ),
+      child: new Stack(
+        children: <Widget>[
+          resultInfo,
+        ],
+      ),
     );
   }
 }
 
-List<Widget> _buildrandeList(){
-  var items = new List<Widget>();
-  for(var a in _EventItem){
-    items.add(new _ResultItem(_result));
-  }
-}
 
-class _ResultsAndEvents extends StatelessWidget{
-
-  @override
-  Widget build(BuildContext context){
-    return new
-}
