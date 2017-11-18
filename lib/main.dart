@@ -11,7 +11,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
 
-  final GoogleSignIn googleSignIn = new GoogleSignIn();
+  GoogleSignIn googleSignIn = new GoogleSignIn();
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
   }
 
   bool signedIn() {
+    GoogleSignIn googleSignIn = new GoogleSignIn();
     GoogleSignInAccount user = googleSignIn.currentUser;
     return user != null;
   }
@@ -60,9 +61,19 @@ class _SignInPageState extends State<SignInPage> {
           ),
 
           new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              new Padding(padding: new EdgeInsets.all(60.0)),
+
+              new Text("Secret Santa",
+                  style: new TextStyle(color: Colors.white,
+                      fontSize: 52.0,
+                      fontWeight: FontWeight.bold,
+                  ),
+
+              ),
+              
+              new Padding(padding: new EdgeInsets.all(122.0),),
 
               new Container(
                 child: new IconButton(
