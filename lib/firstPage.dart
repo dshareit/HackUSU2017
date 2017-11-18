@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hackusu2017/main.dart';
 
+
 class FirstPage extends StatefulWidget{
   @override
   _FirstPageState createState() => new _FirstPageState();
@@ -33,13 +34,66 @@ class _FirstPageState extends State<FirstPage> {
           color: Colors.black,
         ),
         new Expanded(
-          child: new ListView.builder(
-            itemBuilder: (context, index) => new ResultCard(resultList[index]),
-            itemCount: resultList.length,
-            padding: new EdgeInsets.symmetric(vertical: 16.0),
-          ),
-        ),
+            child: new Row(
+                children: <Widget>[
+                  new Expanded(
+                    child: new ListView.builder(
+                      itemBuilder: (context, index) => new ResultCard(resultList[index]),
+                      itemCount: resultList.length,
+                      padding: new EdgeInsets.symmetric(vertical: 16.0),
+                    ),
+                  ),
+                ],
+              ),
+            ),
       ],
+    );
+  }
+}
+class DaysToChristmas extends StatelessWidget{
+  DateTime christmas = new DateTime.utc(2017, 12, 25);
+  DateTime now = new DateTime.now();
+
+  @override
+  Widget build(BuildContext context){
+    var daysLeft = christmas.difference(now).inDays.toString();
+
+    final timeLeft = new Container(
+      child: new Column(
+        children: <Widget>[
+          new Expanded(
+            child: new Row(
+              children: <Widget>[
+                new Text("ONLY " + daysLeft + " DAYS UNTIL CHRISTMAS!", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 19.0)),
+              ],
+            ),
+          ),
+        ],
+      ),
+      height: 110.0,
+      decoration: new BoxDecoration(
+        color: Colors.transparent,
+        shape: BoxShape.rectangle,
+        borderRadius: new BorderRadius.circular(8.0),
+        boxShadow: <BoxShadow>[
+          new BoxShadow(
+            color: Colors.transparent,
+            blurRadius: 10.0,
+          ),
+        ],
+      ),
+    );
+    return new Container(
+      height: 45.0,
+      margin: const EdgeInsets.symmetric(
+        vertical: 16.0,
+        horizontal: 26.0,
+      ),
+      child: new Stack(
+        children: <Widget>[
+          timeLeft
+        ],
+      ),
     );
   }
 }
@@ -64,13 +118,32 @@ List<Results> resultList = [
     title: 'Hackathon',
     time: 'Today',
     image: "assets/HackUSUEvent.png",
+    description: "hackusuevents.org",
+  ),
+  const Results(
+    title: 'Hunger & Homelessness Awareness Week',
+    time: 'November 11 - 19',
+    image: 'assets/hhw.png',
     description: "",
+
   ),
   const Results(
     title: 'Project Homeless Connect',
     time: 'October 6, 2017',
-    image: "assets/images.jpg",
-    description: "Visit their websit here: https://www.phcslc.org/",
+    image: "assets/phc.png",
+    description: "phcslc.org",
+  ),
+  const Results(
+    title: 'Food Drive',
+    time: 'October 2017',
+    image: "assets/StuffaBus.jpg",
+    description: "Stuff a bus at USU"
+  ),
+  const Results(
+    title: 'Students Collect Donations',
+    time: 'May 15,2017',
+    image: "assets/logo.png",
+    description: "theroadhome.org",
   ),
   const Results(
     title: 'Halloween',
@@ -151,7 +224,6 @@ class ResultCard extends StatelessWidget{
     );
   }
 }
-
 
 class DaysToChristmas extends StatelessWidget{
   DateTime christmas = new DateTime.utc(2017, 12, 25);
