@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hackusu2017/main.dart';
@@ -9,15 +11,27 @@ class FirstPage extends StatefulWidget{
 
 class _FirstPageState extends State<FirstPage> {
 
-  //get countDown => new ;
-
-
 
   @override
   Widget build(BuildContext context) {
+
     // TODO: implement build
     return new Column(
       children: <Widget>[
+        new Row(
+          children: <Widget>[
+            new DaysToChristmas(),
+          ],
+        ),
+        new Divider(
+          height: 16.0,
+          color: Colors.black,
+        ),
+        new Text("Past Events"),
+        new Divider(
+          height: 16.0,
+          color: Colors.black,
+        ),
         new Expanded(
             child: new ListView.builder(
                 itemBuilder: (context, index) => new ResultCard(resultList[index]),
@@ -40,23 +54,23 @@ class Results{
     this.title,
     this.time,
     this.image,
-    this.gifts
+    this.gifts,
 });
 }
 
 
 List<Results> resultList = [
   const Results(
-    title: 'Planning meeting',
-    time: 'Yesterday',
-    image: "assets/images.jpg",
-    gifts: const ["Bike", "tablet", "Huntsman Hall"],
-  ),
-  const Results(
     title: 'Hackathon',
     time: 'Today',
     image: "assets/HackUSUEvent.png",
     gifts: const["trophy", "bubbles", "rockstars"],
+  ),
+  const Results(
+    title: 'Planning meeting',
+    time: 'Yesterday',
+    image: "assets/images.jpg",
+    gifts: const ["Bike", "tablet", "Huntsman Hall"],
   ),
   const Results(
     title: 'Halloween',
@@ -138,4 +152,56 @@ class ResultCard extends StatelessWidget{
   }
 }
 
+
+class DaysToChristmas extends StatelessWidget{
+  DateTime christmas = new DateTime.utc(2017, 12, 25);
+  DateTime now = new DateTime.now();
+
+  @override
+  Widget build(BuildContext context){
+    var daysLeft = christmas.difference(now).inDays.toString();
+
+    final timeLeft = new Container(
+      child: new Column(
+        children: <Widget>[
+          new Expanded(
+            child: new Row(
+              children: <Widget>[
+                new Text("Only", style: new TextStyle(fontWeight: FontWeight.bold)),
+                new Text(daysLeft, style: new TextStyle(fontWeight: FontWeight.bold)),
+                new Text("days", style: new TextStyle(fontWeight: FontWeight.bold)),
+                new Text("until", style: new TextStyle(fontWeight: FontWeight.bold)),
+                new Text("Christmas!!", style: new TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+        ],
+      ),
+      height: 110.0,
+      decoration: new BoxDecoration(
+        color: Colors.blue,
+        shape: BoxShape.rectangle,
+        borderRadius: new BorderRadius.circular(8.0),
+        boxShadow: <BoxShadow>[
+          new BoxShadow(
+            color: Colors.red,
+            blurRadius: 10.0,
+          ),
+        ],
+      ),
+    );
+    return new Container(
+      height: 120.0,
+      margin: const EdgeInsets.symmetric(
+        vertical: 16.0,
+        horizontal: 24.0,
+      ),
+      child: new Stack(
+        children: <Widget>[
+          timeLeft
+        ],
+      ),
+    );
+  }
+}
 
