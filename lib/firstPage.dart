@@ -75,7 +75,7 @@ class ResultCard extends StatelessWidget{
   Widget build(BuildContext context){
     final imageHolder = new Container(
       margin: new EdgeInsets.symmetric(
-          vertical: 16.0
+          vertical: 20.0
       ),
       alignment: FractionalOffset.centerLeft,
       child: new Image(
