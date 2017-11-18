@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
 class FirstPage extends StatefulWidget{
   @override
   _FirstPageState createState() => new _FirstPageState();
@@ -11,6 +12,7 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
+
     // TODO: implement build
     return new Column(
       children: <Widget>[
@@ -29,23 +31,16 @@ class _FirstPageState extends State<FirstPage> {
           color: Colors.black,
         ),
         new Expanded(
-            child: new Row(
-                children: <Widget>[
-                  new Expanded(
-                    child: new ListView.builder(
-                      itemBuilder: (context, index) => new ResultCard(resultList[index]),
-                      itemCount: resultList.length,
-                      padding: new EdgeInsets.symmetric(vertical: 16.0),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          child: new ListView.builder(
+            itemBuilder: (context, index) => new ResultCard(resultList[index]),
+            itemCount: resultList.length,
+            padding: new EdgeInsets.symmetric(vertical: 16.0),
+          ),
+        ),
       ],
     );
   }
 }
-
 
 class DaysToChristmas extends StatelessWidget{
   DateTime christmas = new DateTime.utc(2017, 12, 25);
@@ -177,12 +172,6 @@ class ResultCard extends StatelessWidget{
               width: 72.0,
               color: Colors.blue
           ),
-          new Row(
-            children: <Widget>[
-              new Container(width: 8.0),
-              new Text(results.description),
-            ],
-          ),
         ],
       ),
     );
@@ -213,7 +202,7 @@ class ResultCard extends StatelessWidget{
       child: new Stack(
         children: <Widget>[
           resultInfo,
-          imageHolder,
+          imageHolder
         ],
       ),
     );
