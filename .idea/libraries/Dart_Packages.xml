@@ -124,14 +124,14 @@
         <entry key="flutter">
           <value>
             <list>
-              <option value="C:/Program Files/flutter/packages/flutter/lib" />
+              <option value="$USER_HOME$/flutter/packages/flutter/lib" />
             </list>
           </value>
         </entry>
         <entry key="flutter_test">
           <value>
             <list>
-              <option value="C:/Program Files/flutter/packages/flutter_test/lib" />
+              <option value="$USER_HOME$/flutter/packages/flutter_test/lib" />
             </list>
           </value>
         </entry>
@@ -348,7 +348,7 @@
         <entry key="sky_engine">
           <value>
             <list>
-              <option value="C:/Program Files/flutter/bin/cache/pkg/sky_engine/lib" />
+              <option value="$USER_HOME$/flutter/bin/cache/pkg/sky_engine/lib" />
             </list>
           </value>
         </entry>
@@ -415,6 +415,13 @@
             </list>
           </value>
         </entry>
+        <entry key="url_launcher">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/url_launcher-0.4.2+5/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="utf">
           <value>
             <list>
@@ -453,9 +460,6 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://C:/Program Files/flutter/bin/cache/pkg/sky_engine/lib" />
-      <root url="file://C:/Program Files/flutter/packages/flutter/lib" />
-      <root url="file://C:/Program Files/flutter/packages/flutter_test/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/analyzer-0.30.0+4/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/args-0.13.7/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/async-1.13.3/lib" />
@@ -512,11 +516,15 @@
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/term_glyph-1.0.0/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/test-0.12.24+8/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/typed_data-1.1.4/lib" />
+      <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/url_launcher-0.4.2+5/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/utf-0.9.0+3/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/vector_math-2.0.5/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/watcher-0.9.7+4/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/web_socket_channel-1.0.6/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/yaml-2.1.13/lib" />
+      <root url="file://$USER_HOME$/flutter/bin/cache/pkg/sky_engine/lib" />
+      <root url="file://$USER_HOME$/flutter/packages/flutter/lib" />
+      <root url="file://$USER_HOME$/flutter/packages/flutter_test/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
