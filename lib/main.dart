@@ -145,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
     List<BottomNavigationBarItem> result = new List<BottomNavigationBarItem>();
     result.add(new BottomNavigationBarItem(icon: new Icon(Icons.home), title: new Text("Home")));
     result.add(new BottomNavigationBarItem(icon: new Icon(Icons.card_giftcard), title: new Text("Give")));
-    result.add(new BottomNavigationBarItem(icon: new Icon(Icons.settings), title: new Text("Settings")));
+    result.add(new BottomNavigationBarItem(icon: new Icon(Icons.account_circle), title: new Text("Settings")));
     return result;
   }
 
