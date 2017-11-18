@@ -9,6 +9,8 @@ import 'package:firebase_database/firebase_database.dart';         //new
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 final analytics = new FirebaseAnalytics();
 final auth = FirebaseAuth.instance;
@@ -140,15 +142,20 @@ class ResultCard extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    final imageHolder = new Container(
-      margin: new EdgeInsets.symmetric(
-          vertical: 20.0
-      ),
-      alignment: FractionalOffset.centerRight,
-      child: new Image(
-        image: new NetworkImage(results.image),
-        height: 92.0,
-        width: 92.0,
+    final imageHolder =
+    new GestureDetector(
+      onTap: _clickLink,
+
+      child:   new Container(
+        margin: new EdgeInsets.symmetric(
+            vertical: 20.0
+        ),
+        alignment: FractionalOffset.centerRight,
+        child: new Image(
+          image: new NetworkImage(results.image),
+          height: 92.0,
+          width: 92.0,
+        ),
       ),
     );
 
@@ -202,5 +209,14 @@ class ResultCard extends StatelessWidget{
         ],
       ),
     );
+  }
+
+  _clickLink() async {
+    String image = results.link;
+    if (await canLaunch(image)) {
+      await launch(image);
+    } else {
+      throw 'Could not launch $image';
+    }
   }
 }
