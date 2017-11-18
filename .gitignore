@@ -40,5 +40,7 @@ Icon?
 
 Pods/
 
+GeneratedPluginRegistrant.java
+
 .flutter-plugins
 .packages

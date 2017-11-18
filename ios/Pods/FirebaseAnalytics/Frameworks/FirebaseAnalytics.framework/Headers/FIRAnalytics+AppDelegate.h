@@ -2,8 +2,6 @@
 
 #import "FIRAnalytics.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 /**
  * Provides App Delegate handlers to be used in your App Delegate.
  *
@@ -31,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
  *     updated and a new snapshot can be taken.
  */
 + (void)handleEventsForBackgroundURLSession:(NSString *)identifier
-                          completionHandler:(nullable void (^)(void))completionHandler;
+                          completionHandler:(void (^)(void))completionHandler;
 
 /**
  * Handles the event when the app is launched by a URL.
@@ -57,6 +55,3 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)handleUserActivity:(id)userActivity;
 
 @end
-
-NS_ASSUME_NONNULL_END
-
