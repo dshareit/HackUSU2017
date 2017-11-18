@@ -293,11 +293,7 @@ packages:
     version: "0.2.2"
   sky_engine:
     description:
-<<<<<<< HEAD
       path: "..\\..\\..\\flutter\\bin\\cache\\pkg\\sky_engine"
-=======
-      path: "..\\..\\..\\..\\Program Files\\flutter\\bin\\cache\\pkg\\sky_engine"
->>>>>>> origin/master
       relative: true
     source: path
     version: "0.0.99"
@@ -355,6 +351,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.4"
+  url_launcher:
+    description:
+      name: url_launcher
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.2+5"
   utf:
     description:
       name: utf

@@ -32,14 +32,14 @@ class _FirstPageState extends State<FirstPage> {
 
 class Results{
   final String title;
-  final String date;
-  //final FileImage image;
+  final String time;
+  final String image;
   final List<String> gifts;
 
   const Results({
     this.title,
-    this.date,
-    //this.image,
+    this.time,
+    this.image,
     this.gifts
 });
 }
@@ -48,18 +48,20 @@ class Results{
 List<Results> resultList = [
   const Results(
     title: 'Planning meeting',
-    date: 'Yesterday',
-    //image: const FileImage(null),
+    time: 'Yesterday',
+    image: "assets/images.jpg",
     gifts: const ["Bike", "tablet", "Huntsman Hall"],
   ),
   const Results(
     title: 'Hackathon',
-    date: 'Today',
+    time: 'Today',
+    image: "assets/HackUSUEvent.png",
     gifts: const["trophy", "bubbles", "rockstars"],
   ),
   const Results(
     title: 'Halloween',
-    date: 'October 31',
+    time: 'October 31',
+    image: "assets/kids-trick-or-treating.jpg",
     gifts: const ["Candy", "more candy", "pumkins"],
   )
 ];
@@ -69,11 +71,22 @@ class ResultCard extends StatelessWidget{
 
   ResultCard(this.results);
 
-
   @override
   Widget build(BuildContext context){
+    final imageHolder = new Container(
+      margin: new EdgeInsets.symmetric(
+          vertical: 16.0
+      ),
+      alignment: FractionalOffset.centerLeft,
+      child: new Image(
+        image: new AssetImage(results.image),
+        height: 92.0,
+        width: 92.0,
+      ),
+    );
+
     final resultInfoContent = new Container(
-      margin: new EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+      margin: new EdgeInsets.fromLTRB(76.0, 16.0, 16.0, 16.0),
       constraints: new BoxConstraints.expand(),
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,12 +94,12 @@ class ResultCard extends StatelessWidget{
           new Container(height: 4.0),
           new Text(results.title),
           new Container(height: 10.0),
-          new Text(results.date),
+          new Text(results.time),
           new Container(
               margin: new EdgeInsets.symmetric(vertical: 8.0),
               height: 2.0,
-              width: 18.0,
-              color: Colors.red
+              width: 72.0,
+              color: Colors.blue
           ),
         ],
       ),
@@ -95,14 +108,16 @@ class ResultCard extends StatelessWidget{
     final resultInfo = new Container(
       child: resultInfoContent,
       height: 124.0,
+      margin: new EdgeInsets.only(left: 46.0),
       decoration: new BoxDecoration(
-        color: Colors.cyan,
+        color: Colors.white,
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[
           new BoxShadow(
             color: Colors.black12,
             blurRadius: 10.0,
+            offset: new Offset(0.0, 10.0),
           ),
         ],
       ),
@@ -116,6 +131,7 @@ class ResultCard extends StatelessWidget{
       child: new Stack(
         children: <Widget>[
           resultInfo,
+          imageHolder
         ],
       ),
     );
