@@ -9,6 +9,7 @@ import 'package:firebase_database/firebase_database.dart';         //new
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 final analytics = new FirebaseAnalytics();
 final auth = FirebaseAuth.instance;
@@ -24,79 +25,42 @@ class SecondPage extends StatefulWidget {
 
 class _SecondPageState extends State<SecondPage> {
 
-  _SecondPageState();
-
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Column(
       children: <Widget>[
-        new Expanded(
-            child: new ListView.builder(
-                itemBuilder: (context, index) => new ResultCard(resultList[index]),
-              itemCount: resultList.length,
-              padding: new EdgeInsets.symmetric(vertical: 16.0),
-            ),
+        new Flexible(
+            child: new FirebaseAnimatedList(                            //new
+                query: reference,                                       //new
+                padding: new EdgeInsets.all(8.0),                       //new                 //new
+                itemBuilder: (_, DataSnapshot snapshot, Animation<double> animation) { //new
+                  return new ResultCard(new Results(snapshot.value['name'], snapshot.value['item'],
+                      snapshot.value['image'], snapshot.value['location'], snapshot.value['link']));}
           ),
+        ),
+        new Text("Test"),
       ],
     );
   }
 }
 
 class Results{
-  final String family;
-  final String gift;
-  final String giftIcons;
-  final List<String> gifts;
+  final String name;
+  final String item;
+  final String image;
+  final String location;
+  final String link;
 
-  const Results({
-    this.family,
-    this.gift,
-    this.giftIcons,
-    this.gifts
-});
+  Results(
+    this.name,
+    this.item,
+    this.image,
+    this.location,
+    this.link,
+  );
 }
-
-
-List<Results> resultList = [
-  const Results(
-    family: 'Smith Family',
-    gift: '4Fruit of the Loom Mens Basic Brief',
-    giftIcons: "assets/HackUSUEvent.png",
-    gifts: const ["Bike", "tablet", "Huntsman Hall"],
-  ),
-  const Results(
-    family: 'Thompson Family',
-    gift: 'Graco Backless TurboBooster Car Seat, Galaxy',
-    giftIcons: "assets/HackUSUEvent.png",
-    gifts: const["trophy", "bubbles", "rockstars"],
-  ),
-  const Results(
-    family: 'Bradshaw Family',
-    gift: 'Hanes Mens 6 Pack Over-the-Calf Tube Socks',
-    giftIcons: "assets/HackUSUEvent.png",
-    gifts: const ["Candy", "more candy", "pumkins"],
-  ),
-  const Results(
-    family: 'Smith Family',
-    gift: '4Fruit of the Loom Mens Basic Brief',
-    giftIcons: "assets/HackUSUEvent.png",
-    gifts: const ["Bike", "tablet", "Huntsman Hall"],
-  ),
-  const Results(
-    family: 'Thompson Family',
-    gift: 'Graco Backless TurboBooster Car Seat, Galaxy',
-    giftIcons: "assets/HackUSUEvent.png",
-    gifts: const["trophy", "bubbles", "rockstars"],
-  ),
-  const Results(
-    family: 'Bradshaw Family',
-    gift: 'Hanes Mens 6 Pack Over-the-Calf Tube Socks',
-    giftIcons: "assets/HackUSUEvent.png",
-    gifts: const ["Candy", "more candy", "pumkins"],
-  )
-];
 
 class ResultCard extends StatelessWidget{
   final Results results;
@@ -111,7 +75,7 @@ class ResultCard extends StatelessWidget{
       ),
       alignment: FractionalOffset.centerRight,
       child: new Image(
-        image: new AssetImage(results.giftIcons),
+        image: new NetworkImage(results.image),
         height: 92.0,
         width: 92.0,
       ),
@@ -124,9 +88,9 @@ class ResultCard extends StatelessWidget{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Container(height: 4.0),
-          new Text(results.family, style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+          new Text(results.name, style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
           new Container(height: 10.0),
-          new Text(results.gift, style: new TextStyle(fontWeight: FontWeight.w400)),
+          new Text(results.item, style: new TextStyle(fontWeight: FontWeight.w400)),
           new Container(
               margin: new EdgeInsets.symmetric(vertical: 8.0),
               height: 2.0,

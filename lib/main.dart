@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
   }
 
   bool signedIn() {
-    GoogleSignIn googleSignIn = new GoogleSignIn();
     GoogleSignInAccount user = googleSignIn.currentUser;
     return user != null;
   }
@@ -47,6 +46,7 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return new Scaffold(
 
       body: new Stack(
@@ -99,6 +99,12 @@ class _SignInPageState extends State<SignInPage> {
 
   void _switchToHomePage(){
     Navigator.of(context).pushReplacementNamed('/homePage');
+  }
+
+  Future<Null> _checkSignIn() async {
+    GoogleSignInAccount user = widget.googleSignIn.currentUser;
+    if (user == null)
+      user = await widget.googleSignIn.signInSilently();
   }
 
   Future<Null> _onGoogleSignInPressed() async {
