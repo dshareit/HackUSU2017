@@ -30,106 +30,141 @@ class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Scaffold(
-      body: new RefreshIndicator(
-        child: new ListView.builder(itemBuilder: _itemBuilder), 
-        onRefresh: _onRefresh
-        ),
-    );
-  }
-
-  Future<Null> _onRefresh() {
-    Completer<Null> completer = new Completer<Null>();
-
-    Timer timer = new Timer(new Duration(seconds: 3), () {completer.complete();});
-
-    return completer.future;
-  }
-
-  Widget _itemBuilder(BuildContext context, int index){
-    Todo todo =  getTodo(index);
-    return new TodoItemWidget(todo: todo);
-  }
-
-  Todo getTodo(int index){
-    return new Todo(false, "Todo $index");
-  }
-}
-
-class TodoItemWidget extends StatefulWidget{
-  TodoItemWidget({Key, key, this.todo}) : super(key: key);
-
-  final Todo todo;
-
-  @override
-  _TodoItemWidgetState createState() => new _TodoItemWidgetState();
-}
-
-class _TodoItemWidgetState extends State<TodoItemWidget>{
-  @override
-
-  Widget build(BuildContext context){
-    return new ListTile(
-      title: new Text(widget.todo.name),
-      subtitle: new Text("5 members"),
-      onTap: _onTap,
-    );
-  }
-
-  void _onTap(){
-    Route route = new MaterialPageRoute(
-      settings: new RouteSettings(name: "/todos/todo"),
-      builder: (BuildContext context) => new TodoPage(todo: widget.todo),
-      );
-    Navigator.of(context).push(route);
-  }
-}
-
-class TodoPage extends StatefulWidget{
-  TodoPage({Key key, this.todo}) : super(key: key);
-
-  final Todo todo;
-
-  @override
-  _TodoPageState createState() => new _TodoPageState();
-}
-
-class _TodoPageState extends State<TodoPage> {
-  @override
-  Widget build(BuildContext context){
-    var _children = <Widget>[
-      new Expanded(
-            child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                new Container(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: new Text(
-                    'Oeschinen Lake Campground',
-                    style: new TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                new Text(
-                  'Kandersteg, Switzerland',
-                  style: new TextStyle(
-                    color: Colors.grey[500],
-                  ),
-                ),
-              ],
+    return new Column(
+      children: <Widget>[
+        new Expanded(
+            child: new ListView.builder(
+                itemBuilder: (context, index) => new ResultCard(resultList[index]),
+              itemCount: resultList.length,
+              padding: new EdgeInsets.symmetric(vertical: 16.0),
             ),
           ),
-          new Icon(
-            Icons.star,
-            color: Colors.red[500],
+      ],
+    );
+  }
+}
+
+class Results{
+  final String family;
+  final String gift;
+  final String giftIcons;
+  final List<String> gifts;
+
+  const Results({
+    this.family,
+    this.gift,
+    this.giftIcons,
+    this.gifts
+});
+}
+
+
+List<Results> resultList = [
+  const Results(
+    family: 'Smith Family',
+    gift: '4Fruit of the Loom Mens Basic Brief',
+    giftIcons: "assets/HackUSUEvent.png",
+    gifts: const ["Bike", "tablet", "Huntsman Hall"],
+  ),
+  const Results(
+    family: 'Thompson Family',
+    gift: 'Graco Backless TurboBooster Car Seat, Galaxy',
+    giftIcons: "assets/HackUSUEvent.png",
+    gifts: const["trophy", "bubbles", "rockstars"],
+  ),
+  const Results(
+    family: 'Bradshaw Family',
+    gift: 'Hanes Mens 6 Pack Over-the-Calf Tube Socks',
+    giftIcons: "assets/HackUSUEvent.png",
+    gifts: const ["Candy", "more candy", "pumkins"],
+  ),
+  const Results(
+    family: 'Smith Family',
+    gift: '4Fruit of the Loom Mens Basic Brief',
+    giftIcons: "assets/HackUSUEvent.png",
+    gifts: const ["Bike", "tablet", "Huntsman Hall"],
+  ),
+  const Results(
+    family: 'Thompson Family',
+    gift: 'Graco Backless TurboBooster Car Seat, Galaxy',
+    giftIcons: "assets/HackUSUEvent.png",
+    gifts: const["trophy", "bubbles", "rockstars"],
+  ),
+  const Results(
+    family: 'Bradshaw Family',
+    gift: 'Hanes Mens 6 Pack Over-the-Calf Tube Socks',
+    giftIcons: "assets/HackUSUEvent.png",
+    gifts: const ["Candy", "more candy", "pumkins"],
+  )
+];
+
+class ResultCard extends StatelessWidget{
+  final Results results;
+
+  ResultCard(this.results);
+
+  @override
+  Widget build(BuildContext context){
+    final imageHolder = new Container(
+      margin: new EdgeInsets.symmetric(
+          vertical: 20.0
+      ),
+      alignment: FractionalOffset.centerRight,
+      child: new Image(
+        image: new AssetImage(results.giftIcons),
+        height: 92.0,
+        width: 92.0,
+      ),
+    );
+
+    final resultInfoContent = new Container(
+      margin: new EdgeInsets.fromLTRB(26.0, 16.0, 36.0, 16.0),
+      constraints: new BoxConstraints.expand(),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          new Container(height: 4.0),
+          new Text(results.family, style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+          new Container(height: 10.0),
+          new Text(results.gift, style: new TextStyle(fontWeight: FontWeight.w400)),
+          new Container(
+              margin: new EdgeInsets.symmetric(vertical: 8.0),
+              height: 2.0,
+              width: 72.0,
+              color: Colors.redAccent
           ),
-          new Text('41'),
-    ];
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("Help Us")),
-      body: new Column(
-        children: _children,
+        ],
+      ),
+    );
+
+    final resultInfo = new Container(
+      child: resultInfoContent,
+      height: 124.0,
+      margin: new EdgeInsets.only(right: 46.0),
+      decoration: new BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.rectangle,
+        borderRadius: new BorderRadius.circular(8.0),
+        boxShadow: <BoxShadow>[
+          new BoxShadow(
+            color: Colors.black12,
+            blurRadius: 10.0,
+            offset: new Offset(0.0, 10.0),
+          ),
+        ],
+      ),
+    );
+    return new Container(
+      height: 120.0,
+      margin: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 24.0,
+      ),
+      child: new Stack(
+        children: <Widget>[
+          resultInfo,
+          imageHolder
+        ],
       ),
     );
   }
