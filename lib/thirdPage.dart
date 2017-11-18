@@ -48,16 +48,16 @@ class _ThirdPageState extends State<ThirdPage> {
                         children: <Widget>[
                           new Padding(
                               padding: new EdgeInsets.fromLTRB(
-                                  38.0, 0.0, 20.0, 0.0)),
+                                  0.0, 0.0, 20.0, 0.0)),
                           new Icon(
                             Icons.contact_phone,
                             color: Colors.blue[500],
                           ),
                           new Padding(
                               padding:
-                              new EdgeInsets.fromLTRB(12.0, 0.0, 0.0, 0.0)),
+                              new EdgeInsets.fromLTRB(12.0, 0.0, 45.0, 0.0)),
                           new Text(
-                            '(408) 555-1212',
+                            '(385) 200-2193',
                             style: new TextStyle(fontWeight: FontWeight.w600),
                           ),
                         ],
@@ -74,14 +74,14 @@ class _ThirdPageState extends State<ThirdPage> {
                         children: <Widget>[
                           new Padding(
                               padding: new EdgeInsets.fromLTRB(
-                                  16.0, 0.0, 20.0, 0.0)),
+                                  0.0, 0.0, 20.0, 0.0)),
                           new Icon(
                             Icons.contact_mail,
                             color: Colors.blue[500],
                           ),
                           new Padding(
                               padding:
-                              new EdgeInsets.fromLTRB(15.0, 0.0, 0.0, 0.0)),
+                              new EdgeInsets.fromLTRB(35.0, 0.0, 0.0, 0.0)),
                           new Text(
                             'johnsmith@gmail.com',
                             style: new TextStyle(fontWeight: FontWeight.w600),
@@ -91,7 +91,7 @@ class _ThirdPageState extends State<ThirdPage> {
                     ),
                   ),
                 ),
-                new InkWell(onTap: _launchPhoneURL,
+                new InkWell(
                   child: new Card(
                     child: new Container(
                       padding: new EdgeInsets.all(20.0),
@@ -107,7 +107,7 @@ class _ThirdPageState extends State<ThirdPage> {
                           ),
                           new Padding(
                               padding:
-                              new EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0)),
+                              new EdgeInsets.fromLTRB(15.0, 0.0, 0.0, 0.0)),
                           new Text(
                             '1234 Main Street, Ogden, UT',
                             style: new TextStyle(fontWeight: FontWeight.w600),
@@ -127,7 +127,7 @@ class _ThirdPageState extends State<ThirdPage> {
 
   _launchEmailURL() async {
     const url =
-        'mailto:smith@example.org?subject=Someone%20Needs%20Help&body=New%20plugin';
+        'mailto:johnsmith@gmail.com?subject=Someone%20Needs%20Help&body=Hello%20there';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -136,7 +136,7 @@ class _ThirdPageState extends State<ThirdPage> {
   }
 
   _launchPhoneURL() async {
-    const url = 'tel:+18016780047';
+    const url = 'tel:+13852002193';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
