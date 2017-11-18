@@ -37,8 +37,8 @@ flutter:
     - assets/background.png
     - assets/google_sign_in_button.png
     - assets/HackUSUEvent.png
-    - assets/images.jpg
-    - assets/kids-trick-or-treating.jpg
+    - assets/logo.png
+    - assets/phc.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
