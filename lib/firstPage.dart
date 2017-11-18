@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class FirstPage extends StatefulWidget{
   @override
   _FirstPageState createState() => new _FirstPageState();
@@ -31,17 +30,22 @@ class _FirstPageState extends State<FirstPage> {
           color: Colors.black,
         ),
         new Expanded(
-          child: new ListView.builder(
-            itemBuilder: (context, index) => new ResultCard(resultList[index]),
-            itemCount: resultList.length,
-            padding: new EdgeInsets.symmetric(vertical: 16.0),
-          ),
-        ),
+            child: new Row(
+                children: <Widget>[
+                  new Expanded(
+                    child: new ListView.builder(
+                      itemBuilder: (context, index) => new ResultCard(resultList[index]),
+                      itemCount: resultList.length,
+                      padding: new EdgeInsets.symmetric(vertical: 16.0),
+                    ),
+                  ),
+                ],
+              ),
+            ),
       ],
     );
   }
 }
-
 class DaysToChristmas extends StatelessWidget{
   DateTime christmas = new DateTime.utc(2017, 12, 25);
   DateTime now = new DateTime.now();
@@ -115,7 +119,7 @@ List<Results> resultList = [
     title: 'Hunger & Homelessness Awareness Week',
     time: 'November 11 - 19',
     image: 'assets/hhw.png',
-    description: '',
+    description: "",
   ),
   const Results(
     title: 'Project Homeless Connect',
