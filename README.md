@@ -12,4 +12,5 @@ For help getting started with Flutter, view our online
 
 I0S Implementation (IOS 8)
 
-https://user-images.githubusercontent.com/9260241/32986291-4e35f9d6-cc8c-11e7-988e-b7e9bca49925.gif
+![Demo](https://user-images.githubusercontent.com/9260241/32986291-4e35f9d6-cc8c-11e7-988e-b7e9bca49925.gif)
+
