@@ -3,7 +3,8 @@
 Secret Santa - USU 2017 Hackathon
 
  -----------
-    We were very excited to build this app because we feel that most charity and donation events remove the personal contact many people would like as they give of their time and money. 
+ 
+  -  We were very excited to build this app because we feel that most charity and donation events remove the personal contact many people would like as they give of their time and money. 
     This app provides a way for anyone to have more involvement in what their money is used for and how it blesses specific individuals lives. 
 
 ## Getting Started
